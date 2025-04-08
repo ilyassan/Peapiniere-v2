@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import AuthLayout from "../_components/AuthLayout"
+import axios from "@/lib/axios"
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -34,7 +35,6 @@ export default function LoginForm() {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
 
-    // Clear error for this field when user types
     if (formErrors[name as keyof LoginFormData]) {
       setFormErrors((prev) => ({ ...prev, [name]: undefined }))
     }
@@ -67,20 +67,17 @@ export default function LoginForm() {
     setError(null)
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      // In a real app, you would call your authentication API here
-      // const response = await fetch('/api/auth/login', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // })
-
-      // if (!response.ok) throw new Error('Login failed')
-
-      // Redirect to dashboard or home page
-      router.push("/")
+        const response = await axios.post("/auth/login", {
+          email: formData.email,
+          password: formData.password,
+        })
+  
+        const token = response.data.token
+        if (token) {
+          localStorage.setItem("jwt_token", token)
+        }
+  
+        router.push("/")
     } catch (err) {
       setError("Invalid email or password. Please try again.")
     } finally {
