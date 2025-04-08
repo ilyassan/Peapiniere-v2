@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import AuthLayout from "../_components/AuthLayout"
+import axios from "@/lib/axios"
 
 const signupSchema = z
   .object({
@@ -91,26 +92,21 @@ export default function SignupForm() {
     setError(null)
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      // In a real app, you would call your registration API here
-      // const roleId = formData.role === "client" ? 1 : 2
-      // const response = await fetch('/api/auth/signup', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({
-      //     name: formData.name,
-      //     email: formData.email,
-      //     password: formData.password,
-      //     role_id: roleId
-      //   }),
-      // })
-
-      // if (!response.ok) throw new Error('Registration failed')
-
-      // Redirect to login page or dashboard
-      router.push("/auth/login")
+        const roleId = formData.role === "client" ? 3 : 2
+        const response = await axios.post("/auth/signup", {
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          password_confirmation: formData.confirmPassword,
+          role_id: roleId,
+        })
+  
+        const token = response.data.token
+        if (token) {
+          localStorage.setItem("jwt_token", token)
+        }
+  
+        router.push("/login")
     } catch (err) {
       setError("Registration failed. Please try again.")
     } finally {
