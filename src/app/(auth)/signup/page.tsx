@@ -106,7 +106,7 @@ export default function SignupForm() {
           localStorage.setItem("jwt_token", token)
         }
   
-        router.push("/login")
+        router.push("/")
     } catch (err) {
       setError("Registration failed. Please try again.")
     } finally {
