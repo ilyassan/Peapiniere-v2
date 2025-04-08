@@ -28,7 +28,6 @@ export default function PlantCard({ plant }: PlantCardProps): JSX.Element {
         <h3 className="text-lg font-medium text-gray-900 group-hover:text-green-600">{plant.name}</h3>
         <p className="mt-1 text-sm text-gray-500">{plant.description}</p>
         <div className="mt-3 flex justify-between items-center">
-          <p className="text-lg font-bold text-green-700">${plant.price.toFixed(2)}</p>
           <Button variant="default" className="bg-green-600 hover:bg-green-700 text-white" asChild>
             <Link href={`/plants/${plant.slug}`}>See details</Link>
           </Button>
