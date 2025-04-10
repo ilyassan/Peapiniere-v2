@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import AuthLayout from "../_components/AuthLayout"
-import axios from "@/lib/axios"
+import { clientFetch } from "@/lib/clientFetch"
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -67,15 +67,10 @@ export default function LoginForm() {
     setError(null)
 
     try {
-        const response = await axios.post("/auth/login", {
+        await clientFetch.post("/auth/login", {
           email: formData.email,
           password: formData.password,
         })
-  
-        const token = response.data.token
-        if (token) {
-          localStorage.setItem("jwt_token", token)
-        }
   
         router.push("/")
     } catch (err) {
