@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import AuthLayout from "../_components/AuthLayout"
-import axios from "@/lib/axios"
+import { clientFetch } from "@/lib/clientFetch"
 
 const signupSchema = z
   .object({
@@ -93,18 +93,13 @@ export default function SignupForm() {
 
     try {
         const roleId = formData.role === "client" ? 3 : 2
-        const response = await axios.post("/auth/signup", {
+        await clientFetch.post("/auth/signup", {
           name: formData.name,
           email: formData.email,
           password: formData.password,
           password_confirmation: formData.confirmPassword,
           role_id: roleId,
         })
-  
-        const token = response.data.token
-        if (token) {
-          localStorage.setItem("jwt_token", token)
-        }
   
         router.push("/")
     } catch (err) {
