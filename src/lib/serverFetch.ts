@@ -25,6 +25,7 @@ class ApiServer {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        cache: 'force-cache',
         ...(token ? { Cookie: `jwt=${token}` } : {}),
         ...headers,
       },

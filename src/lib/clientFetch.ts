@@ -54,23 +54,23 @@ class ApiClient {
     return response.json();
   }
 
-  get(url: string, config: Partial<RequestConfig> = {}): Promise<ApiResponse> {
+  get(url: string, config: Partial<RequestConfig> = {}): Promise<any> {
     return this.request({ url, method: 'GET', ...config });
   }
 
-  post(url: string, data: any, config: Partial<RequestConfig> = {}): Promise<ApiResponse> {
+  post(url: string, data: any, config: Partial<RequestConfig> = {}): Promise<any> {
     return this.request({ url, method: 'POST', data, ...config });
   }
 
-  patch(url: string, data: any, config: Partial<RequestConfig> = {}): Promise<ApiResponse> {
+  patch(url: string, data: any, config: Partial<RequestConfig> = {}): Promise<any> {
     return this.request({ url, method: 'PATCH', data, ...config });
   }
 
-  put(url: string, data: any, config: Partial<RequestConfig> = {}): Promise<ApiResponse> {
+  put(url: string, data: any, config: Partial<RequestConfig> = {}): Promise<any> {
     return this.request({ url, method: 'PUT', data, ...config });
   }
 
-  delete(url: string, config: Partial<RequestConfig> = {}): Promise<ApiResponse> {
+  delete(url: string, config: Partial<RequestConfig> = {}): Promise<any> {
     return this.request({ url, method: 'DELETE', ...config });
   }
 }

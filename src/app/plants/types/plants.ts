@@ -2,7 +2,9 @@ export interface Plant {
   id: number
   name: string
   slug: string
-  category: string
-  description: string
-  image: string
+  category_name: string
+  images: {
+    id: number
+    url: string
+  }[]
 }
