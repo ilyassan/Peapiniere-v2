@@ -9,6 +9,7 @@ import { OrderDetailsDialog } from "./OrderDetailsDialog"
 import type { Order } from "../types/order"
 import { formatDate } from "../_utils/formatDate"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import LoadingSpin from "../../_components/LoadingSpin"
 
 interface OrdersTableProps {
   orders: Order[]
@@ -55,9 +56,7 @@ export default function OrdersTable({ orders, updateOrder, isLoading, error }: O
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-600"></div>
-      </div>
+      <LoadingSpin/>
     )
   }
 
