@@ -1,10 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { BarChart3, Leaf, ShoppingCart, Users, Settings, HelpCircle, LogOut, ChevronLeft, Home } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { clientFetch } from "@/lib/clientFetch"
 
 interface AdminSidebarProps {
   isOpen: boolean
@@ -13,6 +14,14 @@ interface AdminSidebarProps {
 
 export function AdminSidebar({ isOpen, setIsOpen }: AdminSidebarProps) {
   const pathname = usePathname()
+  const router = useRouter()
+
+
+  const handleLogout = async() => {
+    await clientFetch.post("/logout");
+
+    router.push("/login");
+  }
 
   const routes = [
     {
@@ -77,7 +86,7 @@ export function AdminSidebar({ isOpen, setIsOpen }: AdminSidebarProps) {
           </div>
 
           <div className="p-4 border-t border-gray-200">
-            <Button variant="outline" className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50">
+            <Button variant="outline" onClick={handleLogout} className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50">
               <LogOut className="mr-3 h-5 w-5" />
               <span>Log out</span>
             </Button>

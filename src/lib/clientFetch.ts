@@ -58,7 +58,7 @@ class ApiClient {
     return this.request({ url, method: 'GET', ...config });
   }
 
-  post(url: string, data: any, config: Partial<RequestConfig> = {}): Promise<any> {
+  post(url: string, data: any = {}, config: Partial<RequestConfig> = {}): Promise<any> {
     return this.request({ url, method: 'POST', data, ...config });
   }
 

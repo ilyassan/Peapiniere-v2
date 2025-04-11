@@ -1,27 +1,36 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Link from "next/link";
-import { Menu } from "lucide-react";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { usePathname } from "next/navigation";
+import { useState } from "react"
+import Link from "next/link"
+import { Menu, LogOut } from "lucide-react"
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { usePathname, useRouter } from "next/navigation"
+import { clientFetch } from "@/lib/clientFetch"
+import { Button } from "@/components/ui/button"
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
+  const router = useRouter()
+  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+
+  const handleLogout = async () => {
+    await clientFetch.post("/logout")
+    router.push("/login")
+    setIsOpen(false) // Close mobile menu on logout
+  }
 
   const links = [
     { name: "Home", url: "/" },
     { name: "Plants", url: "/plants" },
     { name: "My Orders", url: "/my-orders" },
-  ];
+  ]
 
   const isActive = (url: string) => {
     if (url === "/plants" && pathname?.startsWith("/plants")) {
-      return true;
+      return true
     }
-    return pathname === url;
-  };
+    return pathname === url
+  }
 
   return (
     <nav className="bg-white shadow sticky top-0 z-50">
@@ -45,6 +54,13 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <Button
+              className="text-white bg-red-400 hover:bg-red-500 flex items-center"
+              onClick={handleLogout}
+            >
+              <LogOut className="h-5 w-5 mr-2" />
+              Logout
+            </Button>
           </div>
 
           <div className="flex items-center md:hidden">
@@ -70,6 +86,13 @@ export default function Navbar() {
                       {link.name}
                     </Link>
                   ))}
+                  <Button
+                    className="text-white bg-red-400 hover:bg-red-500 flex items-center justify-start px-3"
+                    onClick={handleLogout}
+                  >
+                    <LogOut className="h-5 w-5 mr-2" />
+                    Logout
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
@@ -77,5 +100,5 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  );
+  )
 }
