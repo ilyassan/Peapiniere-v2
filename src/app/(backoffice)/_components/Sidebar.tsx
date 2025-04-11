@@ -17,34 +17,19 @@ export function AdminSidebar({ isOpen, setIsOpen }: AdminSidebarProps) {
   const routes = [
     {
       title: "Dashboard",
-      href: "/admin/dashboard",
+      href: "/dashboard",
       icon: BarChart3,
     },
     {
       title: "Plants",
-      href: "/admin/plants",
+      href: "/plants1",
       icon: Leaf,
     },
     {
       title: "Orders",
-      href: "/admin/orders",
+      href: "/orders",
       icon: ShoppingCart,
-    },
-    {
-      title: "Customers",
-      href: "/admin/customers",
-      icon: Users,
-    },
-    {
-      title: "Settings",
-      href: "/admin/settings",
-      icon: Settings,
-    },
-    {
-      title: "Help",
-      href: "/admin/help",
-      icon: HelpCircle,
-    },
+    }
   ]
 
   return (
@@ -68,18 +53,6 @@ export function AdminSidebar({ isOpen, setIsOpen }: AdminSidebarProps) {
           </div>
 
           <div className="flex-1 overflow-auto py-4 px-3">
-            <div className="space-y-1">
-              <Link
-                href="/"
-                className={cn(
-                  "flex items-center px-3 py-2 text-sm font-medium rounded-md",
-                  "text-gray-600 hover:text-gray-900 hover:bg-gray-100",
-                )}
-              >
-                <Home className="mr-3 h-5 w-5" />
-                <span>Back to Store</span>
-              </Link>
-            </div>
 
             <div className="mt-6">
               <h3 className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Management</h3>
