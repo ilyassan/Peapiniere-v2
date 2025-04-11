@@ -1,110 +1,14 @@
-"use client"
 import Navbar from "@/app/_components/Navbar"
 import Footer from "@/app/_components/Footer"
 import PageHeader from "./_components/Header"
 import PlantCard from "./_components/Card"
 import type { Plant } from "./types/plants"
-import { JSX } from "react"
+import { serverFetch } from "@/lib/serverFetch"
 
-export default function PlantsPage(): JSX.Element {
-  const plants: Plant[] = [
-    {
-      id: 1,
-      name: "Aromatic Basil",
-      slug: "aromatic-basil",
-      category: "Aromatic Plants",
-      description: "Perfect for Mediterranean cuisine",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-    {
-      id: 2,
-      name: "Monstera Deliciosa",
-      slug: "monstera-deliciosa",
-      category: "Indoor Plants",
-      description: "Tropical plant with split leaves",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-    {
-      id: 3,
-      name: "French Lavender",
-      slug: "french-lavender",
-      category: "Aromatic Plants",
-      description: "Ideal for fragrance and garden decoration",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-    {
-      id: 4,
-      name: "Euphorbia Cactus",
-      slug: "euphorbia-cactus",
-      category: "Cacti & Succulents",
-      description: "Resistant and easy to maintain plant",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-    {
-      id: 5,
-      name: "Peace Lily",
-      slug: "peace-lily",
-      category: "Indoor Plants",
-      description: "Elegant white flowers and air-purifying qualities",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-    {
-      id: 6,
-      name: "Snake Plant",
-      slug: "snake-plant",
-      category: "Indoor Plants",
-      description: "Nearly indestructible with striking vertical leaves",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-    {
-      id: 7,
-      name: "Aloe Vera",
-      slug: "aloe-vera",
-      category: "Cacti & Succulents",
-      description: "Medicinal plant with soothing gel inside leaves",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-    {
-      id: 8,
-      name: "Echeveria",
-      slug: "echeveria",
-      category: "Cacti & Succulents",
-      description: "Rosette-forming succulent with beautiful colors",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-    {
-      id: 9,
-      name: "Mint",
-      slug: "mint",
-      category: "Aromatic Plants",
-      description: "Refreshing herb perfect for teas and cocktails",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-    {
-      id: 10,
-      name: "Rosemary",
-      slug: "rosemary",
-      category: "Aromatic Plants",
-      description: "Fragrant herb ideal for cooking",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-    {
-      id: 11,
-      name: "Fiddle Leaf Fig",
-      slug: "fiddle-leaf-fig",
-      category: "Indoor Plants",
-      description: "Trendy plant with large violin-shaped leaves",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-    {
-      id: 12,
-      name: "Pothos",
-      slug: "pothos",
-      category: "Indoor Plants",
-      description: "Trailing vine with variegated heart-shaped leaves",
-      image: "https://t4.ftcdn.net/jpg/11/25/96/23/360_F_1125962371_D8BU9ZpTBMTihboBGctD9Y6ChtWUNXy1.jpg",
-    },
-  ]
+
+export default async function PlantsPage() {
+
+  const plants: Plant[] = await serverFetch.get("/plants");
 
   return (
     <div className="min-h-screen bg-gray-50">
