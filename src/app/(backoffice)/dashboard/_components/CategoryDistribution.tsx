@@ -1,18 +1,18 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts"
 
-const data = [
-  { name: "Indoor Plants", value: 40 },
-  { name: "Aromatic Plants", value: 25 },
-  { name: "Cacti & Succulents", value: 20 },
-  { name: "Outdoor Plants", value: 15 },
-]
+const COLORS = ["#22c55e", "#3b82f6", "#f97316", "#8b5cf6", "#ef4444", "#10b981"]
 
-const COLORS = ["#22c55e", "#3b82f6", "#f97316", "#8b5cf6"]
+interface CategoryData {
+  name: string
+  value: number
+}
 
-export function CategoryDistribution() {
+export function CategoryDistribution({ data }: { data: CategoryData[]}) {
+
   return (
     <Card className="col-span-1">
       <CardHeader>
@@ -46,4 +46,3 @@ export function CategoryDistribution() {
     </Card>
   )
 }
-
