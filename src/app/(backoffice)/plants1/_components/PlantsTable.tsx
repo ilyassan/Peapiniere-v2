@@ -14,7 +14,7 @@ import { Eye, Trash2, Edit } from 'lucide-react'
 import { PlantDetailsDialog } from "./PlantDetailsDialog"
 import { DeletePlantDialog } from "./DeletePlantDialog"
 import { Plant } from "@/app/plants/types/plants"
-import LoadingSpin from "../../_components/LoadingSpin"
+import LoadingSpin from "../../../_components/LoadingSpin"
 
 interface PlantsTableProps {
     plants: Plant[];
