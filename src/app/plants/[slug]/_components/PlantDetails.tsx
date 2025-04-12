@@ -4,18 +4,9 @@ import { useState } from "react"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import { Plant } from "../../types/plants"
 
-interface PlantDetailsProps {
-  plant: {
-    id: number
-    name: string
-    slug: string
-    category: string
-    images: string[]
-  }
-}
-
-export default function PlantDetails({ plant }: PlantDetailsProps) {
+export default function PlantDetails({ plant }: { plant: Plant}) {
   const [activeImage, setActiveImage] = useState(0)
 
   return (
@@ -34,7 +25,7 @@ export default function PlantDetails({ plant }: PlantDetailsProps) {
           <div className="flex flex-col">
             <div className="overflow-hidden rounded-lg bg-gray-100 mb-4">
               <img
-                src={plant.images[activeImage] || "/placeholder.svg"}
+                src={plant.images[activeImage].url || "/placeholder.svg"}
                 alt={plant.name}
                 width={600}
                 height={600}
@@ -52,7 +43,7 @@ export default function PlantDetails({ plant }: PlantDetailsProps) {
                     }`}
                   >
                     <img
-                      src={image || "/placeholder.svg"}
+                      src={image.url || "/placeholder.svg"}
                       alt={`${plant.name} view ${i + 1}`}
                       width={150}
                       height={150}
@@ -69,13 +60,13 @@ export default function PlantDetails({ plant }: PlantDetailsProps) {
             <div className="flex justify-between items-start">
               <h1 className="text-3xl font-bold tracking-tight text-gray-900">{plant.name}</h1>
               <Badge variant="outline" className="bg-green-100 text-green-800 hover:bg-green-100">
-                {plant.category}
+                {plant.category.name}
               </Badge>
             </div>
 
             <div className="mt-6">
               <p className="text-lg text-gray-700">
-                This beautiful {plant.category.toLowerCase()} is a perfect addition to your plant collection. Each plant
+                This beautiful {plant.category.name.toLowerCase()} is a perfect addition to your plant collection. Each plant
                 is carefully grown and selected to ensure you receive a healthy, vibrant specimen.
               </p>
               <p className="mt-4 text-lg text-gray-700">
@@ -91,7 +82,7 @@ export default function PlantDetails({ plant }: PlantDetailsProps) {
                 habitat.
               </p>
               <p className="mt-4 text-gray-700">
-                This plant belongs to the {plant.category} family, known for their unique characteristics and benefits.
+                This plant belongs to the {plant.category.name} family, known for their unique characteristics and benefits.
                 Whether you're a seasoned plant parent or just starting your collection, {plant.name} makes a wonderful
                 addition to any space.
               </p>
