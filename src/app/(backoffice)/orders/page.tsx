@@ -2,7 +2,7 @@
 
 import Title from "../_components/Title"
 import OrdersTable from "./_components/OrdersTable"
-import { useOrders } from "./_hooks/useOrders"
+import { useOrders } from "@/app/_hooks/useOrders"
 
 export default function OrdersPage() {
   const { orders, updateOrder, isLoading, error } = useOrders()

@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Eye, Package, Loader2 } from "lucide-react"
 import { OrderDetailsDialog } from "./OrderDetailsDialog"
-import type { Order } from "../types/order"
+import type { Order } from "@/app/types/order"
 import { formatDate } from "../_utils/formatDate"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import LoadingSpin from "../../_components/LoadingSpin"
+import LoadingSpin from "../../../_components/LoadingSpin"
 
 interface OrdersTableProps {
   orders: Order[]
