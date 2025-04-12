@@ -10,15 +10,10 @@ import type { Order } from "@/app/types/order"
 import { formatDate } from "../_utils/formatDate"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import LoadingSpin from "../../../_components/LoadingSpin"
+import { useOrders } from "@/app/_hooks/useOrders"
 
-interface OrdersTableProps {
-  orders: Order[]
-  updateOrder: (order: Order) => Promise<Order>
-  isLoading: boolean
-  error: string | null
-}
-
-export default function OrdersTable({ orders, updateOrder, isLoading, error }: OrdersTableProps) {
+export default function OrdersTable() {
+  const { orders, updateOrder, isLoading, error } = useOrders()
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
   const [isDetailsOpen, setIsDetailsOpen] = useState(false)
   const [updatingOrderId, setUpdatingOrderId] = useState<number | null>(null)
