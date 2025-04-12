@@ -6,15 +6,11 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Eye, Package, Loader2 } from "lucide-react"
 import { OrderDetailsDialog } from "./OrderDetailsDialog"
-import type { Order } from "../types/order"
+import type { Order } from "@/app/types/order"
 import { formatDate } from "../_utils/formatDate"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-<<<<<<< Updated upstream
-import LoadingSpin from "../../_components/LoadingSpin"
-=======
 import LoadingSpin from "../../../_components/LoadingSpin"
 import { useOrders } from "@/app/_hooks/useOrders"
->>>>>>> Stashed changes
 
 export default function OrdersTable() {
   const { orders, updateOrder, isLoading, error } = useOrders()

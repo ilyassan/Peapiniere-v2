@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import type { Order } from "../types/order"
+import type { Order } from "@/app/types/order"
 import { formatDate } from "../_utils/formatDate"
 
 interface OrderDetailsDialogProps {

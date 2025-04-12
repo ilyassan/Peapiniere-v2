@@ -1,10 +1,6 @@
 import AuthWrapper from "@/lib/AuthWrapper"
 import Title from "../_components/Title"
 import OrdersTable from "./_components/OrdersTable"
-<<<<<<< Updated upstream
-import { useOrders } from "./_hooks/useOrders"
-=======
->>>>>>> Stashed changes
 
 export default async function OrdersPage() {
 
