@@ -3,12 +3,18 @@ import Footer from "@/app/_components/Footer"
 import PageHeader from "./_components/Header"
 import PlantCard from "./_components/Card"
 import type { Plant } from "./types/plants"
-import { serverFetch } from "@/lib/serverFetch"
+import { handleApiError, serverFetch } from "@/lib/serverFetch"
 
 
 export default async function PlantsPage() {
 
-  const plants: Plant[] = await serverFetch.get("/plants");
+  let plants: Plant[];
+
+  try {
+    plants = await serverFetch.get("/plants");
+  } catch (error: unknown) {
+    handleApiError(error);
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
