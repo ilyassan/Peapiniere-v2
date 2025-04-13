@@ -15,7 +15,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { X, Loader2 } from "lucide-react"
 import { Plant } from "@/app/plants/types/plants"
-import { useCategories } from "../../categories/_hooks/useCategories"
+import { useCategoryStore } from "../../categories/_hooks/useCategories"
 
 interface PlantDetailsDialogProps {
   plant: Plant
@@ -34,7 +34,7 @@ export function PlantDetailsDialog({
   setIsEditMode,
   updatePlant
 }: PlantDetailsDialogProps) {
-  const { categories, isLoading: categoryLoading } = useCategories()
+  const { categories, isLoading: categoryLoading } = useCategoryStore()
   const [formData, setFormData] = useState<Plant>({ ...plant })
   const [activeTab, setActiveTab] = useState<"details" | "images">("details")
   const [isSubmitting, setIsSubmitting] = useState(false)

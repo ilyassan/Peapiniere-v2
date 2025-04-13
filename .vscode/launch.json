@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/ycode/Desktop/peapinier-v2/src/app/(backoffice)/categories",
-      "program": "c:/Users/ycode/Desktop/peapinier-v2/src/app/(backoffice)/categories/build/Debug/outDebug",
+      "cwd": "c:/Users/ycode/Desktop/peapinier-v2/src/app/(backoffice)/plants1",
+      "program": "c:/Users/ycode/Desktop/peapinier-v2/src/app/(backoffice)/plants1/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
