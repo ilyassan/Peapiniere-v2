@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { X, Loader2 } from "lucide-react"
 import { Plant } from "@/app/plants/types/plants"
-import { useCategories } from "../../categories/_hooks/useCategories"
+import { useCategoryStore } from "../../categories/_hooks/useCategories"
 
 interface CreatePlantDialogProps {
   isOpen: boolean
@@ -18,7 +18,7 @@ interface CreatePlantDialogProps {
 }
 
 export function CreatePlantDialog({ isOpen, onClose, createPlant }: CreatePlantDialogProps) {
-  const { categories, isLoading: categoryLoading } = useCategories()
+  const { categories, isLoading: categoryLoading } = useCategoryStore()
   const [activeTab, setActiveTab] = useState<"details" | "images">("details")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [newImageUrls, setNewImageUrls] = useState<string[]>([])
