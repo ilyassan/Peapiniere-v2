@@ -13,10 +13,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { usePlants } from "../_hooks/usePlants"
-import { useCategories } from "../_hooks/useCategories"
 import { X, Loader2 } from "lucide-react"
 import { Plant } from "@/app/plants/types/plants"
+import { useCategories } from "../../categories/_hooks/useCategories"
 
 interface PlantDetailsDialogProps {
   plant: Plant
