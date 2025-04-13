@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { BarChart3, Leaf, ShoppingCart, Users, Settings, HelpCircle, LogOut, ChevronLeft, Home } from "lucide-react"
+import { BarChart3, Leaf, ShoppingCart, Box, LogOut, ChevronLeft } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { clientFetch } from "@/lib/clientFetch"
@@ -28,6 +28,11 @@ export function AdminSidebar({ isOpen, setIsOpen }: AdminSidebarProps) {
       title: "Dashboard",
       href: "/dashboard",
       icon: BarChart3,
+    },
+    {
+      title: "Categories",
+      href: "/categories",
+      icon: Box,
     },
     {
       title: "Plants",
